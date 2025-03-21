@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Data Analysis{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/data_analysis.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+    <div class="title">
+        <h1>Data Analysis</h1>
+    </div>
+    <div class="wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+
+    <div class="container">
+        <div class="main-body">
+        <form class="form" method="GET" action="{% url 'data-analysis' %}">
+            <div class="parameter">
+                <label>Data parameter</label>
+                <select id="paramY" name="paramY" class="parameter-dropdown">
+                    <option value="concern_level" selected>Level of Concern</option>
+                    <option value="likes">Likes</option>
+                    <option value="dislikes">Dislikes</option>
+                    <option value="is_homeless">Homeless</option>
+                    <option value="is_alcoholic">Alcoholism</option>
+                    <option value="using_drugs">Drug Abuse</option>
+                    <option value="taking_medication">Taking Medication</option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn" value="Create chart"/>
+            
+            <div class="parameter">
+                <label>Group by parameter</label>
+                <select id="paramX" name="paramX" class="parameter-dropdown">
+                    <option value="age" selected>Age</option>
+                    <option value="gender">Gender</option>
+                </select>
+            </div>
+            <select id="chart_type" name="chart_type" class="parameter-dropdown" hidden disabled>
+                <option value="bar" selected>Bar</option>
+                <option value="scatter">Scatter</option>
+                <option value="line">Line</option>
+                <option value="pie">Pie</option>
+            </select>
+        </form>
+        <h3 class="profile-num">Total number of profiles: {{ total_profiles }}</p>
+        <hr>
+            <div class="graphs-row">
+                <div class="graph-block">
+
+                    <div class="graph">
+                        {% if chart %}
+                        <img class="graph" src = '../../static/images/chart.png'>
+
+                        {% else %}
+                        <p>Choose the parameters desired and create the chart of your choice</p>
+                        
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+{% endblock %}

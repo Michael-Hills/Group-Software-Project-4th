@@ -1,0 +1,255 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - RAC Form{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/rac.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+<div class="title">
+    <h1>'Raise A Concern' Form</h1>
+</div>
+<div class="wave">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+</div>
+
+<div class="container">
+    <div class="main-body">
+        <!-- your_template.html -->
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Section: Date and Person Raising Concern -->
+            <fieldset>
+                <legend>Date and Person Raising Concern</legend>
+                <label for="{{ form.date.id_for_label }}">
+                    Date:
+                </label>
+                <div class="date">
+                    {{ form.RACdate }}
+                </div>
+
+                <label for="{{ form.cr_name.id_for_label }}">
+                    Name of Concern Raiser:
+                </label>
+                <div class="txt-box">
+                    {{ form.cr_name }}
+                </div>
+                
+                <label for="{{ form.cr_contact.id_for_label }}">
+                    Contact Details:
+                </label>
+                <div class="txt-box">
+                    {{ form.cr_contact }}
+                </div>
+
+                <label for="{{ form.cr_org.id_for_label }}">
+                    CR Organisation:
+                </label>
+                <div class="txt-box">
+                    {{ form.cr_org }}
+                </div>
+
+                <label for="{{ form.cr_team.id_for_label }}">
+                    CR Team (Leave blank if not)
+                </label>
+                <div class="txt-box">
+                    {{ form.cr_team }}
+                </div>
+
+                <label for="{{ form.cr_risk.id_for_label }}">
+                    Any known risks:
+                </label>
+                <div class="big-txt-box">
+                    {{ form.cr_risk }}
+                </div>
+            </fieldset>
+
+            <!-- Section: About the Person -->
+            <fieldset>
+                <legend>About the Person</legend>
+                <label for="{{ form.person_name.id_for_label }}">
+                    Name / Initials:
+                </label>
+                <div class="txt-box">
+                    {{ form.person_name }}
+                </div>
+
+                <label for="{{ form.person_contact.id_for_label }}">
+                    Contact number:
+                </label>
+                <div class="txt-box">
+                    {{ form.person_contact }}
+                </div>
+
+                <label for="{{ form.gp_surgery.id_for_label }}">
+                    GP Surgery:
+                </label>
+                <div class="txt-box">
+                    {{ form.gp_surgery }}
+                </div>
+
+                <label for="{{ form.nhs_number.id_for_label }}">
+                    NHS Number:
+                </label>
+                <div class="txt-box">
+                    {{ form.nhs_number }}
+                </div>
+
+                <label for="{{ form.address.id_for_label }}">
+                    Address:
+                </label>
+                <div class="big-txt-box">
+                    {{ form.address }}
+                </div>
+
+                <label for="{{ form.email.id_for_label }}">
+                    Email:
+                </label>
+                <div class="txt-box">
+                    {{ form.email }}
+                </div>
+
+                <label for="{{ form.dob.id_for_label }}">
+                    dob:
+                </label>
+                <div class="date">
+                    {{ form.dob }}
+                </div>
+
+                <div class="check-box-bar">
+                    <label for="{{ form.is_homeless.id_for_label }}" class="question">
+                        Is the person homeless?
+                    </label>
+                    <div class="check-box">
+                        {{ form.is_homeless}}
+                    </div>
+                </div>
+
+                <div class="check-box-bar">
+                    <label for="{{ form.is_alcoholic.id_for_label }}" class="question">
+                        Is the person an alcoholic?
+                    </label>
+                    <div class="check-box">
+                        {{ form.is_alcoholic}}
+                    </div>
+                </div>
+
+                <div class="check-box-bar">
+                    <label for="{{ form.using_drugs.id_for_label }}" class="question">
+                        Is the person a regular drug user?
+                    </label>
+                    <div class="check-box">
+                        {{ form.using_drugs}}
+                    </div>
+                </div>
+
+                <div class="check-box-bar">
+                    <label for="{{ form.taking_medication.id_for_label }}" class="question">
+                        Is the person taking any medication?
+                    </label>
+                    <div class="check-box">
+                        {{ form.taking_medication}}
+                    </div>
+                </div>
+
+                <div class="check-boxes">
+                    <div class="check-box-container walk-in">
+                        <label for="{{ form.walk_in.id_for_label }}">
+                            Walk in?
+                        </label>
+                        <div class="dropdown">
+                            {{ form.walk_in }}
+                        </div>
+                    </div>
+                    
+                    <div class="check-box-container">
+                        <label for="{{ form.gender.id_for_label }}">
+                            Gender:
+                        </label>
+                        <div class="check-box-list">
+                            {% for checkbox in form.gender %}
+                            <div class="gender-check-box">
+                                {{ checkbox }}
+                                <label for="{{ checkbox.id_for_label }}"> {{ checkbox.value|slice:":1" }} </label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Section: About the Concern -->
+            <fieldset>
+                <legend>About the Concern</legend>
+                <label for="{{ form.concern_description.id_for_label }}">
+                    Description of Concern:
+                </label>
+                <div class="big-txt-box">
+                    {{ form.concern_description }}
+                </div>
+            </fieldset>
+
+            <!-- Section: Consent -->
+            <fieldset>
+                <legend>Consent</legend>
+                <p>
+                    "I give my permission for CoLab Exeter to share personal information with other service providers in connection with my care, including accessing and sharing my medical, and if applicable, mental health and police records. 
+                    I agree to a referral being made to Devon Mind, Devon Partnership Trust or Clock Tower Surgery, in order to support my needs. 
+                    I understand that CoLab Exeter will hold information gathered about me from the various agencies and as such my rights under the Data Protection Act will not be affected.
+                    I agree to my information being shared and gathered between services Verbal Consent.
+                    Your consent to share personal information is entirely voluntary and you may withdraw your consent at any time. 
+                    Should you have any questions about this process, or wish to withdraw your consent please contact: onemht@colabexeter.org.uk"
+                </p>
+                <label for="{{ form.consent_to_share.id_for_label }}">
+                    I agree to the terms and give my consent.
+                </label>
+                <div class="check-box">
+                    {{ form.consent_to_share}}
+                </div>
+            </fieldset>
+
+            <!-- Section: Signature and Date -->
+            <fieldset>
+                <legend>Signature and Date</legend>
+                <label for="{{ form.signature.id_for_label }}">
+                    Signed:
+                </label>
+                <div class="txt-box">
+                    {{ form.signature }}
+                </div>
+
+                <label for="{{ form.signature_date.id_for_label }}">
+                    Date:
+                </label>
+                <div class="date">
+                    {{ form.signature_date }}
+                </div>
+            </fieldset>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit">Submit Concern</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script>
+if (show_popup == 2)
+    // Show your popup logic here
+    alert('Success!');
+endif
+if (show_popup == 1 )
+    // Show your popup logic here
+    alert('Error. Data was not added to the database');
+endif
+</script>
+{% endblock %}
+
+</body>
+</html>

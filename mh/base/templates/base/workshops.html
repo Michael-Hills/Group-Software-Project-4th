@@ -1,0 +1,80 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Workshops{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/workshops.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+    <div class="title">
+        <h1>Workshops</h1>
+    </div>
+    <div class="wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <a href="{% url 'workshopForm' %}" class="create-workshop">Create Workshop</a>
+        <div class="main-body">
+            <div class="workshops-list">
+                <h2>Upcoming:</h2>
+                {% for workshop in futureWorkshops %}
+                <div class="workshop">
+                    <a href="{% url 'workshop' workshop.id %}" class="workshop-left">
+                        <div class="id">
+                            {{workshop.id}}
+                        </div>
+                        <div class="name">{{workshop.name}}</div>
+                    </a>
+
+                    <div class="workshop-right">
+                        <a href = "{% url 'edit-workshop-participants' workshop.id %}" class="edit-workshop">
+                            <div class="edit">
+                                Edit
+                            </div>
+                        </a>
+                        <a href = "{% url 'delete-workshop' workshop.id %}" class="delete-workshop">
+                            <div class="delete">
+                                Delete
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <h2>Past:</h2>
+
+                {% for workshop in pastworkshops %}
+                <div class="workshop">
+                    <a href="{% url 'workshop' workshop.id %}" class="workshop-left">
+                        <div class="id">
+                            {{workshop.id}}
+                        </div>
+                        <div class="name">{{workshop.name}}</div>
+                    </a>
+
+                    <div class="workshop-right">
+                        <a href = "{% url 'edit-workshop-participants' workshop.id %}" class="edit-workshop">
+                            <div class="edit">
+                                Edit
+                            </div>
+                        </a>
+                        <a href = "{% url 'delete-workshop' workshop.id %}" class="delete-workshop">
+                            <div class="delete">
+                                Delete
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoLab</title>
+    <link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+</head>
+<script src="{% static '/js/navbar.js' %}"></script>
+<body>
+
+    <div id="full-nav">
+    {%if page != 'login'%}
+        {% if request.user.is_authenticated %}
+            <div id="top-bar">
+                <a href="/" >
+                    <img src="{% static '/images/colab_logo.jpg' %}" width="48px" alt="logo" id="logo" class="nav">
+                </a>
+                <a href = "{% url 'logout' %}" id="logout" class="nav">Logout</a>
+            </div>
+            <div id="nav-bar">
+                <a href = "/" id="home" class="nav"> Profiles</a>
+                <a href = "{% url 'workshops' %}" id="workshops" class="nav"> Workshops</a>
+                <a href = "{% url 'data-analysis' %}" id="data-analysis" class="nav"> Data Analysis</a>
+                <a href = "{% url 'rac' %}" id="rac" class="nav"> RAC Form</a>
+                <a href = "{% url 'upload' %}" id="upload" class="nav"> Upload Data</a>
+                <a href = "{% url 'data-output' %}" id="upload" class="nav"> Export Data</a>
+            </div>
+        {% else %}
+            <a href = "{% url 'login' %}" class="nav">Login</a>
+        {% endif %}
+    {% endif %}
+    </div>
+
+</body>
+</html>

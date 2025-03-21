@@ -1,0 +1,64 @@
+
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Workshop Form{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/rac.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+<div class="title">
+    <h1>Concern Level</h1>
+</div>
+<div class="wave">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+    </svg>
+</div>
+
+<div class="container">
+    <div class="main-body">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Concern Level</legend>
+                <label for="{{ form.referredTo.id_for_label }}">
+                    Concern Level:
+                </label>
+                <div class="check-box">
+                    {{form.concern_level}}
+                </div>
+            </fieldset>
+            <div>
+                {{ form.errors }}
+            </div>
+            <div class="bottom-btns">
+                <a href ="{{request.META.HTTP_REFERER}}" class="back-like btn">Back</a>
+                <button type="submit" class="submit-like btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script>
+if (show_popup == 2)
+    // Show your popup logic here
+    alert('Success!');
+endif
+if (show_popup == 1 )
+    // Show your popup logic here
+    alert('Error. Data was not added to the database');
+endif
+</script>
+{% endblock %}
+
+</body>
+</html>
+
+

@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+    <div class="form-container">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="Submit" value="Submit">
+        </form>
+    </div>
+    <p>{{profile.person_name}}</p>
+{% endblock %}

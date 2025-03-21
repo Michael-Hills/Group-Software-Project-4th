@@ -1,0 +1,96 @@
+h1 {
+    font-family: 'Chewy-Regular', sans-serif;
+    font-size: 64px;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ABB883;
+    color: #fff;
+    position: relative;
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(115% + 1.3px);
+    height: 141px;
+}
+
+.wave .shape-fill {
+    fill: #ABB883;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.main-body {
+    margin-top: 90px;
+    width: 60%;
+    background-color: #ABB883;
+    border: #91233C 4px solid;
+    border-radius: 40px;
+    display:block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    background-color: #DBDFD2;
+    color: #91233C;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+
+    width: fit-content;
+    height: fit-content;
+    padding: 2px 4px;
+    padding-inline: 24px;
+    margin: 6px;
+    border: #91233C 4px solid;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #f2f4ea;
+    color: #eb6987;
+}

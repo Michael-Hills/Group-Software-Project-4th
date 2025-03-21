@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Workshop Form{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/delete.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+<div class="container">
+    <div class="main-body">
+
+        <form method="POST" action="">
+            {% csrf_token %}
+            <p>Are you sure you want to add <span>{{profile.person_name}}</span> to <span>{{workshop.name}}</span> ?</p>
+            <div class="bottom-btns" style="margin: 12px;">    
+                <a href ="{{request.META.HTTP_REFERER}}" class="back btn">Back</a>
+                <input type="Submit" value="Confirm Add" class="confirm btn">
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

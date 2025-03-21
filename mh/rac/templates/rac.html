@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concern Form</title>
+</head>
+<body>
+
+<h2>Concern Form</h2>
+
+<!-- your_template.html -->
+<form action="{% url 'submit_concern' %}" method="post">
+    {% csrf_token %}
+
+    <!-- Section: Date and Person Raising Concern -->
+    <fieldset>
+        <legend>Date and Person Raising Concern:</legend>
+        <label for="{{ form.date.id_for_label }}">Date:</label>
+        {{ form.date }}<br>
+
+        <label for="{{ form.cr_name.id_for_label }}">Name of Concern Raiser:</label>
+        {{ form.cr_name }}<br>
+
+        <label for="{{ form.cr_contact.id_for_label }}">Contact Details:</label>
+        {{ form.cr_contact }}<br>
+
+        <label for="{{ form.cr_org.id_for_label }}">CR Organisation:</label>
+        {{ form.cr_org }}<br>
+
+        <label for="{{ form.cr_team.id_for_label }}">CR Team (Leave blank if not)</label>
+        {{ form.cr_team }}<br>
+
+        <label for="{{ form.cr_risk.id_for_label }}">Any known risks:</label>
+        {{ form.cr_risk }}<br>
+    </fieldset>
+
+    <!-- Section: About the Person -->
+    <fieldset>
+        <legend>About the Person:</legend>
+        <label for="{{ form.person_name.id_for_label }}">Name / Initials:</label>
+        {{ form.person_name }}<br>
+
+        <label for="{{ form.person_contact.id_for_label }}">Contact number:</label>
+        {{ form.person_contact }}<br>
+
+        <label for="{{ form.gp_surgery.id_for_label }}">GP Surgery:</label>
+        {{ form.gp_surgery }}<br>
+
+        <label for="{{ form.nhs_number.id_for_label }}">NHS Number:</label>
+        {{ form.nhs_number }}<br>
+
+        <label for="{{ form.address.id_for_label }}">Address:</label>
+        {{ form.address }}<br>
+
+        <label for="{{ form.walk_in.id_for_label }}">Walk in?</label>
+        {{ form.walk_in }}<br>
+
+        <label for="{{ form.email.id_for_label }}">Email:</label>
+        {{ form.email }}<br>
+
+        <label for="{{ form.is_homeless.id_for_label }}">Is the person homeless</label>
+        {{ form.is_homeless }}<br>
+
+        <label for="{{ form.is_alcoholic.id_for_label }}">Is the person an alcoholic</label>
+        {{ form.is_alcoholic }}<br>
+
+        <label for="{{ form.using_drugs.id_for_label }}">Is the person a regular drug user</label>
+        {{ form.using_drugs }}<br>
+
+        <label for="{{ form.taking_medication.id_for_label }}">Is the person taking any medication</label>
+        {{ form.taking_medication }}<br>
+
+        <label for="{{ form.dob.id_for_label }}">dob:</label>
+        {{ form.dob }}<br>
+
+        <label for="{{ form.gender.id_for_label }}">Gender:</label><br>
+        {% for checkbox in form.gender %}
+            {{ checkbox }}<br>
+        {% endfor %}
+    </fieldset>
+
+    <!-- Section: About the Concern -->
+    <fieldset>
+        <legend>About the Concern:</legend>
+        <label for="{{ form.concern_description.id_for_label }}">Description of Concern:</label>
+        {{ form.concern_description }}<br>
+    </fieldset>
+
+    <!-- Section: Consent -->
+
+    
+    <fieldset>
+        <p>
+            "I give my permission for CoLab Exeter to share personal information with other service providers in connection with my care, including accessing and sharing my medical, and if applicable, mental health and police records. I agree to a referral being made to Devon Mind, Devon Partnership Trust or Clock Tower Surgery, in order to support my needs. I understand that CoLab Exeter will hold information gathered about me from the various agencies and as such my rights under the Data Protection Act will not be affected.
+    
+            I agree to my information being shared and gathered between services Verbal Consent
+            
+            Your consent to share personal information is entirely voluntary and you may withdraw your consent at any time. Should you have any questions about this process, or wish to withdraw your consent please contact: onemht@colabexeter.org.uk"
+        </p>
+        <legend>Consent:</legend>
+        <label for="{{ form.consent_checkbox.id_for_label }}">I agree to the terms and give my consent.</label>
+        {{ form.consent_checkbox }}<br>
+    </fieldset>
+
+    <!-- Section: Signature and Date -->
+    <fieldset>
+        <legend>Signature and Date:</legend>
+        <label for="{{ form.signature.id_for_label }}">Signed:</label>
+        {{ form.signature }}<br>
+
+        <label for="{{ form.signature_date.id_for_label }}">Date:</label>
+        {{ form.signature_date }}<br>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit Concern</button>
+</form>
+
+<script>
+{% if show_popup %}
+    // Show your popup logic here
+    alert('Success!');
+{% endif %}
+{% if not show_popup %}
+    // Show your popup logic here
+    alert('Error. Data was not added to the database');
+{% endif %}
+</script>
+
+
+
+
+</body>
+</html>

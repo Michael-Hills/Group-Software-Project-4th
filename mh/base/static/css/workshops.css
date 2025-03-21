@@ -1,0 +1,222 @@
+h1 {
+    font-family: 'Chewy-Regular', sans-serif;
+    font-size: 64px;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ABB883;
+    color: #fff;
+    position: relative;
+}
+
+.content {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.wave {
+    position: absolute;
+    margin-top: -1px;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    pointer-events: none;
+    transform: rotate(180deg);
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 58px;
+    transform: rotateY(180deg);
+}
+
+.wave .shape-fill {
+    fill: #ABB883;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.create-workshop {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: #DBDFD2;
+    color: #91233C;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+
+    text-decoration: none;
+    width: 180px;
+    height: 30px;
+    border: #91233C 4px solid;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px; 
+    position: absolute;
+    top: 114px;
+    margin-right: 55% ;
+}
+
+.create-workshop:hover {
+    background-color: #f2f4ea;
+    color: #eb6987;
+}
+
+.main-body {
+    margin-top: 90px;
+    width: 40%;
+    background-color: #ABB883;
+    border: #91233C 4px solid;
+    border-radius: 40px;
+    display:block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.workshops-list {
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.workshop:first-child {
+    margin-top: 20px; 
+}
+
+.workshop:last-child {
+    margin-bottom: 20px;
+}
+
+.workshop {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    background-color: #DBDFD2;
+    color: #91233C;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+
+    width: 80%;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: #91233C 4px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+}
+
+.workshop a:link,
+.workshop a:visited {
+    color: inherit;
+    text-decoration: none; 
+}
+
+.workshop-left {
+    width: 70%;
+    height: 100%;
+    border-right: #91233C 4px solid;
+}
+
+.workshop-mid {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.workshop-right {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.id {
+    font-family: 'Chewy-Regular', sans-serif;
+    width: fit-content;
+    font-size: 24px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-right: #91233C 4px solid;
+    border-bottom: #91233C 4px solid;
+    border-bottom-right-radius: 12px;
+}
+
+.name {
+    font-size: 28px;
+    padding-top: 4px;
+    padding-left: 10%;
+    justify-content: center;
+    line-height: 100%;
+}
+
+.edit-workshop {
+    border-bottom: #91233C 4px solid;
+}
+
+.edit-workshop,
+.delete-workshop {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+}
+
+.edit-workshop a,
+.delete-workshop a {
+    display: block;
+    text-align: center;
+    line-height: 100%; 
+}
+
+.workshop-left:hover,
+.edit-workshop:hover,
+.delete-workshop:hover,
+.create-workshop:hover {
+    background-color: #f2f4ea;
+}
+
+.workshop-left:hover .name,
+.edit-workshop:hover .edit,
+.delete-workshop:hover .delete,
+.create-workshop:hover {
+    color: #eb6987;
+}

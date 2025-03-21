@@ -1,0 +1,168 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Profile{% endblock %}
+{% block additional_css %}
+    <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+
+<div class="pseudo-container">
+    <div class="container">
+        <div class="top-box">
+            <div class="top-left">
+                <div class="profile-info">
+                    <div class="name">
+                        {{ profile.person_name }}
+                    </div>
+                    <div class="small-info">
+                        <div class="dob">
+                            {{profile.dob}}
+                        </div>
+                        <!-- <div class="gender">
+                            Gender: {{profile.gender}}
+                        </div> -->
+                    </div>
+                </div>
+                <div class="concern">
+                    <div class="concern-desc">
+                        Concern: {{profile.concern_description}}
+                    </div>
+                    <div class="traffic-light">
+                        <div class="light {% if profile.concern_level == 'Low' %}green active{% endif %}">
+                            Concern Level: <span class="{% if profile.concern_level == 'Low' %}green txt{% endif %}">Low</span>
+                        </div>
+                        <div class="light {% if profile.concern_level == 'Medium' %}yellow active{% endif %}">
+                            Concern Level: <span class="{% if profile.concern_level == 'Medium' %}yellow txt{% endif %}">Medium</span>
+                        </div>
+                        <div class="light {% if profile.concern_level == 'High' %}red active{% endif %}">
+                            Concern Level: <span class="{% if profile.concern_level == 'High' %}red txt{% endif %}">High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-right-btns">
+                <a href="{% url 'add-followup' profile.id %}" class="followup btn">
+                    Add Followup Meeting
+                </a>
+                <br>
+                <a href = "{% url 'concernLevel' profile.id %}" class="edit-concern btn">
+                    Edit Concern Level  
+                </a>
+            </div>
+        </div>
+        <div class="main-body">
+            <div class="left-col">
+                <div class="plan txt-bubble">
+                    <div class="plan-left">
+                        <h2>Plan: </h2> 
+                        <ul>
+                            <li>{{profile.personal_plan}}</li>
+                        </ul>
+                        <a href="{% url 'personalPlan' pk=profile.id %}" class="edit-plan btn">
+                            Edit Plan
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="left-btns txt-bubble">
+                    <div class="referred-to left">
+                        <span class="title">Referred to:</span> {{profile.referredTo}}
+                    </div>
+                    <div class="added-comments left">
+                        <span class="title">Additional Referral Comments:</span> {{profile.referredToMore}}
+                    </div>    
+                    <a href="{% url 'add-referral' profile.id %}" class="edit-referral left btn">
+                        Edit Referral
+                    </a>
+                </div>
+
+                <a href="{% url 'addProfileWorkshop' profile.id %}" class="btn">
+                    Add to a Workshop
+                </a>
+            </div>
+
+            <div class="mid-col">
+                <div class="likes txt-bubble">
+                    <h2>Likes:</h2>
+                    <ul>
+                        {% for like in profile.likes %}
+                            <li>{{ like }}{% if loop.last %},{% endif %}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href = "{% url 'likes-dislikes' profile.id %}" class="edit-likes-dislikes btn">Edit Likes</a>
+                </div>
+
+                <div class="workshops txt-bubble">
+                    <h2>Workshops </h2>
+                    <h3>Upcoming:</h3>
+                    <div class="workshop-list">
+                        {% for workshop in futureworkshops %}
+                            <a href="{% url 'workshop' pk=workshop.id %}" class="workshop">
+                                <div class="workshop-info">
+                                    <div class="name">{{ workshop.name }}</div>
+                                    <div class="date">{{ workshop.date }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
+
+                        <h3>Past:</h3>
+
+                        {% for workshop in pastworkshops %}
+                            <a href="{% url 'workshop' pk=workshop.id %}" class="workshop">
+                                <div class="workshop-info">
+                                    <div class="name">{{ workshop.name }}</div>
+                                    <div class="date">{{ workshop.date }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-col">
+                <div class="dislikes txt-bubble">
+                    <h2>Dislikes:</h2>
+                    <ul>
+                        {% for dislikes in profile.dislikes %}
+                        <li>{{ dislikes }}</li>
+                        {% endfor %}
+                    </ul>
+                    <a href = "{% url 'likes-dislikes' profile.id %}" class="edit-likes-dislikes btn">Edit Dislikes</a>
+                </div>
+                <div class="timeline txt-bubble">
+                    <h2> Timeline </h2>
+                    <div class="event-list">
+                        {% for event in timeline %}
+                            {% if event.follow %}
+                                <div class="followup-box">
+                                    <div class="event-info">
+                                        <div class="name">Followup</div>
+                                        <div class="date">{{ event.date }}</div>
+                                    </div>
+                                </div>
+    
+                            {% else %}
+                            <a href="{% url 'workshop' pk=event.id %}" class="event">
+                                <div class="event-info">
+                                    <div class="name">{{ event.name }}</div>
+                                    <div class="date">{{ event.date }}</div>
+                                </div>
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                </div>
+            </div>
+        </div>
+        <a href = "{% url 'edit-profile' profile.id %}" class="edit-profile btn">
+            Edit RAC Form
+        </a>
+        <a href = "{% url 'pdf-output' profile.id %}" class="edit-profile btn">
+            Export Profile as PDF File
+        </a>
+    </div>
+</div>
+{% endblock %}

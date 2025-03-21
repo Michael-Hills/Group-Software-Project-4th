@@ -1,0 +1,35 @@
+a {text-decoration: none;}
+
+a.nav {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+    
+    background-color: #91233C;
+    border-bottom: #91233C 4px solid;
+    padding: 10px;
+    
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    display: inline-block;
+}
+
+a.nav.active {
+    border-bottom: #eb6987 4px solid;
+}
+
+a.nav:hover {
+    background-color: #eb6987;
+    border-bottom: #eb6987 4px solid;
+}
+
+a#logout {
+    float: right;
+}
+
+
+div#full-nav {
+    background-color: #91233C;
+}

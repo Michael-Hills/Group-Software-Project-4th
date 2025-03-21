@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}CoLab - Workshop{% endblock %}
+{% block additional_css %}
+<link rel="stylesheet" href="{% static '/css/workshop.css' %}">
+{% endblock %}
+
+{% block content %}
+{{ redirect_to_login_immediately }}
+<div class="pseudo-container">
+    <div class="main-body">
+
+        <div class="workshop-title">
+            <h1 class="workshop-name">{{ workshop.name }}</h1>
+            <h1 class="workshop-date">{{ workshop.date }}</h1>
+        </div>
+
+        <div class="wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
+        <div class="participants">
+            <div class="participants-list attended">
+                {% for level in levels %}
+                    <div class="participant">
+                        <a href="{% url 'profile' level.profile.id %}" class="participant-left">
+                            <div class="name">
+                                {{level.profile.person_name}}
+                            </div>
+                        </a>
+                        <a href="{% url 'editHappiness' profileId=level.profile.id workshopId=workshop.id %}" class="participant-right">
+                            <div class="feeling-title">
+                                Feeling:
+                            </div>
+                            <div class="feeling-values">
+                                {{level.before}} 🡲 {{level.after}}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="participants-list not-attended">
+                {% for participant in participants %}
+                    {% if participant.id not in levelProfiles%}
+                        <div class="participant">
+                            <a href="{% url 'profile' participant.id %}" class="participant-left">
+                                <div class="name">
+                                    {{participant.person_name}}
+                                </div>
+                            </a>
+                            <a href="{% url 'editHappiness' profileId=participant.id workshopId=workshop.id %}" class="participant-right">
+                                <div class="na">
+                                    Not Attended
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,167 @@
+h1 {
+    font-family: 'Chewy-Regular', sans-serif;
+    font-size: 64px;
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ABB883;
+    color: #fff;
+    position: relative;
+}
+
+.content {
+    margin: 0;
+    padding: 0;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(148% + 1.3px);
+    height: 72px;
+    transform: rotateY(180deg);
+}
+
+.wave .shape-fill {
+    fill: #ABB883;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.main-body {
+    padding: 20px;
+    margin-top: 70px;
+    width: 70%;
+    background-color: #ABB883;
+    border: #91233C 4px solid;
+    border-radius: 40px;
+    display:block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.profile-num {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.graphs-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.graph-block {
+    width: calc(50% + 60px); /* Adjusted width to half minus margins */
+    margin: 5px;
+    padding: 5px;
+    background-color: #DBDFD2;
+    border: #91233C 4px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.graph {
+    width: 100%;
+    height: 100%;
+}
+
+.form{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.parameter{
+    margin: 6px;
+}
+
+.parameter-dropdown {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: #DBDFD2;
+    color: #91233C;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+    border: #91233C 2px solid;
+    border-radius: 10px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+.btn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: #DBDFD2;
+    color: #91233C;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-variant: small-caps;
+
+    width: fit-content;
+    height: fit-content;
+    padding: 2px 4px;
+    padding-inline: 24px;
+    margin: 6px;
+    border: #91233C 2px solid;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #f2f4ea;
+    color: #eb6987;
+}
+
+.graph{
+    width: 100%;
+    height: 100%;
+}
